@@ -7,8 +7,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     <style>
         #map {
             width: 990px;
@@ -117,13 +119,71 @@
         }).addTo(map) ;
 
         var marker = L.marker([-6.979595534231281, 110.25480331807343], {icon: home}).addTo(map).bindPopup('HOME');
-        var marker = L.marker([-7.011492069464668, 110.18617091923244], {icon: home}).addTo(map).bindPopup('Kedung Pengilon');
-        var marker = L.marker([-6.926956045473766, 110.30124960889245], {icon: home}).addTo(map).bindPopup('Pantai Ngebum');
-        var marker = L.marker([-6.96808530166973, 110.25442798299383], {icon: home}).addTo(map).bindPopup('Jabal Park');
-        var marker = L.marker([-6.978024744536348, 110.22946210192075], {icon: home}).addTo(map).bindPopup('Kolam Renang Sukomulyo');
-        var marker = L.marker([-7.0106624678351475, 110.13709971192193], {icon: home}).addTo(map).bindPopup('Bendungan Juwero');
+        var marker = L.marker([-7.011492069464668, 110.18617091923244], 
+                    {icon: dam}).addTo(map).bindPopup('Kedung Pengilon'+
+                    "<br><button class='btn btn-info' onclick='return rute(-7.011492069464668, 110.18617091923244)'>Rute</button>");
+        var marker = L.marker([-6.926956045473766, 110.30124960889245], 
+                    {icon: beach}).addTo(map).bindPopup('Pantai Ngebum'+
+                    "<br><button onclick='return rute(-6.926956045473766, 110.30124960889245)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.96808530166973, 110.25442798299383], 
+                    {icon: park}).addTo(map).bindPopup('Jabal Park'+
+                    "<br><button onclick='return rute(-6.96808530166973, 110.25442798299383)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.978024744536348, 110.22946210192075], 
+                    {icon: pool}).addTo(map).bindPopup('Kolam Renang Sukomulyo'+
+                    "<br><button onclick='return rute(-6.978024744536348, 110.22946210192075)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-7.0106624678351475, 110.13709971192193], 
+                    {icon: dam}).addTo(map).bindPopup('Bendungan Juwero'+
+                    "<br><button onclick='return rute(-7.0106624678351475, 110.13709971192193)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-7.0873881130177985, 110.10044744234125], 
+                    {icon: dam}).addTo(map).bindPopup('Curug Sewu'+
+                    "<br><button onclick='return rute(-7.0873881130177985, 110.10044744234125)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.970441636738855, 110.06202691412183], 
+                    {icon: park}).addTo(map).bindPopup('Taman Kota Weleri'+
+                    "<br><button onclick='return rute(-6.970441636738855, 110.06202691412183)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.965876439406531, 110.05819427403772], 
+                    {icon: pool}).addTo(map).bindPopup('Kolam Renang Watersix'+
+                    "<br><button onclick='return rute(-6.965876439406531, 110.05819427403772)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.970229672932104, 110.07302443846399], 
+                    {icon: pool}).addTo(map).bindPopup('Sekartama Waterland'+
+                    "<br><button onclick='return rute(-6.970229672932104, 110.07302443846399)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.90222851867717, 110.0663775483646], 
+                    {icon: beach}).addTo(map).bindPopup('Pantai Cahaya'+
+                    "<br><button onclick='return rute(-6.90222851867717, 110.0663775483646)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.902828694462552, 110.0611866917355], 
+                    {icon: beach}).addTo(map).bindPopup('Pantai Sendang Sikucing'+
+                    "<br><button onclick='return rute(-6.902828694462552, 110.0611866917355)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.890328324283506, 110.10586141406677], 
+                    {icon: beach}).addTo(map).bindPopup('Pantai Indah Kemangi'+
+                    "<br><button onclick='return rute(-6.890328324283506, 110.10586141406677)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.85790471314116, 110.16437038997883], 
+                    {icon: beach}).addTo(map).bindPopup('Pantai Muara Kencan'+
+                    "<br><button onclick='return rute(-6.85790471314116, 110.16437038997883)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.921350173293345, 110.2044780014694], 
+                    {icon: park}).addTo(map).bindPopup('Taman Garuda Kota Kendal'+
+                    "<br><button onclick='return rute(-6.921350173293345, 110.2044780014694)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.921861364432504, 110.20414493126059], 
+                    {icon: alunalun}).addTo(map).bindPopup('Alun-Alun Kota Kendal'+
+                    "<br><button onclick='return rute(-6.921861364432504, 110.20414493126059)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.961499842880079, 110.25302300110967], 
+                    {icon: alunalun}).addTo(map).bindPopup('Alun-Alun Kaliwungu'+
+                    "<br><button onclick='return rute(-6.961499842880079, 110.25302300110967)' class='btn btn-info'>Rute</button>");
+        var marker = L.marker([-6.921745249945842, 110.18297775941795], 
+                    {icon: pool}).addTo(map).bindPopup('Kolam Renang Tirto Arum'+
+                    "<br><button onclick='return rute(-6.921745249945842, 110.18297775941795)' class='btn btn-info'>Rute</button>");
 
-        
+        var control = L.Routing.control({
+            waypoints: [
+                L.latLng(-6.979595534231281, 110.25480331807343),
+                L.latLng(-7.0873881130177985, 110.10044744234125)
+                ],
+                routeWhileDragging: true
+              })
+            control.addTo(map);
+
+        function rute(lat,lng){
+            var latLng = L.latLng(lat,lng)
+            control.spliceWaypoints(control.getWaypoints().length - 1, 1, latLng);
+        } 
     </script>
 </body>
 </html>

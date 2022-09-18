@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+    <style>
+        #map {
+            width: 990px;
+            height: 590px;
+        }
+        
+    </style>
+    </head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+          <h1 class="center">Peta Navigasi Wisata Kabupaten Kendal</h1>
+          <h6 style="padding-left: 60%;">(Renaldy's Travel and Tour)</h6>
+        </a>
+      </nav>
+    <div class="row">
+        <div class="col-md-9 border">
+            <div id="map"></div>
+        </div>
+        <div class="col-md-3 border">
+            <div class="borderline">
+                <p class="center">Titik Awal (Rumah)</p>
+            </div>
+
+            <img src="assets/img/north.png" alt="" width="90" height="100" class="center">
+            <img src="https://www.kindpng.com/picc/m/9-97627_location-map-pin-pinpoint-point-pointer-location-clip.png" alt="" srcset="" width="20" height="20"><span>
+                -6.9795955, 110.2548033
+            </span><br>
+            <img src="assets/img/loc.png" alt="" srcset="" width="20" height="20"><span>
+                Perum.Kaliwungu Indah B14/23 RT 09/RW 10
+            </span>
+            <div class="space">
+                <div class="borderline">
+                    <p class="center">Wisata Tujuan</p>
+                </div>
+            </div>
+            <div class="space">
+                <div class="borderline">
+                    <p class="center">Akses</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        var home = L.icon({
+            iconUrl: 'assets/img/home.png',
+            iconSize:     [32, 32], // size of the icon
+            iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+
+        });
+
+        var alunalun = L.icon({
+            iconUrl: 'assets/img/alunalun.png',
+            iconSize:     [32, 32], // size of the icon
+            iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+
+        });
+
+        var beach = L.icon({
+            iconUrl: 'assets/img/beach.png',
+            iconSize:     [32, 32], // size of the icon
+            iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+
+        });
+
+        var dam = L.icon({
+            iconUrl: 'assets/img/dam.png',
+            iconSize:     [32, 32], // size of the icon
+            iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+
+        });
+
+        var harbor = L.icon({
+            iconUrl: 'assets/img/harbor.png',
+            iconSize:     [32, 32], // size of the icon
+            iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+
+        });
+
+        var island = L.icon({
+            iconUrl: 'assets/img/island.png',
+            iconSize:     [32, 32], // size of the icon
+            iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+
+        });
+
+        var pool = L.icon({
+            iconUrl: 'assets/img/swimming pool.png',
+            iconSize:     [32, 32], // size of the icon
+            iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+
+        });
+
+        var park = L.icon({
+            iconUrl: 'assets/img/park.png',
+            iconSize:     [32, 32], // size of the icon
+            iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+
+        });
+        var map = L.map('map').setView([-7.025631655697489, 110.17694164087375], 11)
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+        }).addTo(map) ;
+
+        var marker = L.marker([-6.979595534231281, 110.25480331807343], {icon: home}).addTo(map).bindPopup('HOME');
+        var marker = L.marker([-7.011492069464668, 110.18617091923244], {icon: home}).addTo(map).bindPopup('Kedung Pengilon');
+        var marker = L.marker([-6.926956045473766, 110.30124960889245], {icon: home}).addTo(map).bindPopup('Pantai Ngebum');
+        var marker = L.marker([-6.96808530166973, 110.25442798299383], {icon: home}).addTo(map).bindPopup('Jabal Park');
+        var marker = L.marker([-6.978024744536348, 110.22946210192075], {icon: home}).addTo(map).bindPopup('Kolam Renang Sukomulyo');
+        var marker = L.marker([-7.0106624678351475, 110.13709971192193], {icon: home}).addTo(map).bindPopup('Bendungan Juwero');
+
+        
+    </script>
+</body>
+</html>

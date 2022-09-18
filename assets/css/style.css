@@ -1,0 +1,35 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: #040404;
+    color: #fff;
+    position: relative;
+    background: transparent;
+    background: #ffffff;
+  }
+  
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    text-align: center;
+    width: 50%;
+  }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Raleway", sans-serif;
+  }
+
+.space {
+    padding-top: 70px;
+}
+
+.borderline {
+    width: 300px;
+    border: solid rgb(0, 0, 0) 2px;
+}

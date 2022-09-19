@@ -26,10 +26,11 @@ h6 {
   }
 
 .space {
-    padding-top: 70px;
+    padding-top: 30px;
 }
 
 .borderline {
     width: 300px;
     border: solid rgb(0, 0, 0) 2px;
 }
+
